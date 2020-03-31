@@ -39,6 +39,12 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t  composer \t ${php composer --version}" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
+
 COPY cre /cre
 
 VOLUME ["/cre/www"]
