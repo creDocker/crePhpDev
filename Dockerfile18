@@ -15,6 +15,7 @@ ARG BUILD_TAG=latest
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV NODE_VERSION 11.15.3
+ENV COMPOSER_VERSION 1.10.1
 
 LABEL Name="Php Dev for CRE" \
       CRE=$CRE_VERSION \ 

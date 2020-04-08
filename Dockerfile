@@ -15,6 +15,7 @@ ARG BUILD_TAG=latest
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV NODE_VERSION 11.15.3
+ENV COMPOSER_VERSION 1.10.1
 
 LABEL Name="Php Dev for CRE" \
       CRE=$CRE_VERSION \ 
@@ -40,7 +41,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-##    echo "$(date +'%F %R') \t  composer \t ${php composer --version}" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t  $(composer --version)" >> /cre/versions.txt  && \
     echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
     echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
