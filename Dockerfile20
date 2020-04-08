@@ -44,7 +44,7 @@ RUN apt-get update \
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
 ##    echo "$(date +'%F %R') \t  composer \t ${php /usr/local/bin/composer --version}" >> /cre/versions.txt  && \
-    echo "$(date +'%F %R') \t  composer \t ${composer --version}" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t  composer \t $(composer --version)" >> /cre/versions.txt  && \
     echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
     echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
