@@ -6,5 +6,18 @@ Todo:
 
 0.2020 -> node 12?
 
+(/etc/php/7.4/fpm/conf.d/20-xdebug.ini ->  /etc/php/7.4/mods-available/xdebug.ini) +  99_xdebug.ini ?
+
+https://stackoverflow.com/questions/14046501/check-if-xdebug-is-working
+https://github.com/rajivkanaujia/alphaworks/wiki/Enable-debugging-in-PHP-via-Xdebug
+
+https://www.netways.de/blog/2013/11/13/php-remote-debugging-mit-xdebug/
+
+remote enable - port 9000, xdb.localhost, add subdomain?
+
+https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug
+
+
+
 
 

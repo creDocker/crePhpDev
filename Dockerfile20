@@ -43,6 +43,12 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
+# Install prestissimo: https://github.com/hirak/prestissimo
+# to speedup composer
+# https://getcomposer.org/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens
+# https://github.com/hirak/prestissimo#composer-authentication
+RUN composer global require hirak/prestissimo
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  $(composer --version)" >> /cre/versions.txt  && \
     echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
