@@ -14,7 +14,7 @@ ARG BUILD_MONTH=0
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV NODE_VERSION 10.15.3
-ENV COMPOSER_VERSION 1.10.1
+ENV COMPOSER_VERSION 1.10.1 #1.2.0 #2.0.8
 
 LABEL Name="Php Dev for CRE" \
       Year=$BUILD_YEAR \
@@ -34,7 +34,7 @@ RUN apt-get update \
 
 # Install composer and selected extensions
 RUN apt-get update \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
