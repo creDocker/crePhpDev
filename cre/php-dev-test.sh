@@ -5,22 +5,36 @@ if [ ! -f /cre/versions.txt ]; then
     exit 1
 fi
 
+cat /cre/versions.txt
+
 if [ ! -f /cre/php-procfile ]; then
     echo "[FAIL]: File /cre/php-procfile not found!"
     exit 1
 fi
 
-if [ ! grep "crePhp" /cre/versions.txt > /dev/null]; then
-    echo "[FAIL]: php not installed!"
+isInFile=$(cat /cre/versions.txt | grep -c "crePhp")
+if [ $isInFile -eq 0 ]; then
+    echo "[FAIL]: Php not installed!"
     exit 1
 fi
 
-if [ ! grep -P "PHP $PHP_VERSION" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -cP "PHP $PHP_VERSION")
+if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of php installed!"
     #exit 1
 fi
 
-#shoreman /cre/postgres-procfile &
+isInFile=$(cat /cre/versions.txt | grep -c "Composer")
+if [ $isInFile -eq 0 ]; then
+    echo "[FAIL]: Composer not installed!"
+    exit 1
+fi
+
+isInFile=$(cat /cre/versions.txt | grep -cP "Composer version $COMPOSER_VERSION")
+if [ $isInFile -eq 0 ]; then
+    echo "[WARNING]: Wrong version of php installed!"
+    #exit 1
+fi
 
 sleep 2
 

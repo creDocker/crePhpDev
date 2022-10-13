@@ -10,11 +10,12 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
-ARG BUILD_TAG=2019.0
+ARG BUILD_TAG=latest
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV NODE_VERSION 11.15.3
+ENV COMPOSER_VERSION 1.10.1  #1.8.0 #2.0.8
 
 LABEL Name="Php Dev for CRE" \
       CRE=$CRE_VERSION \ 
@@ -35,9 +36,15 @@ RUN apt-get update \
 
 # Install composer and selected extensions
 RUN apt-get update \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t  composer \t $(php /usr/local/bin/composer --version)" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
 
 COPY cre /cre
 

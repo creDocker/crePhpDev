@@ -14,7 +14,9 @@ ARG BUILD_TAG=2020.0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
-ENV NODE_VERSION 11.15.3
+ENV NODE_VERSION 12.16.1
+ENV COMPOSER_VERSION 2.0.1
+# https://getcomposer.org/download/  -> versions
 
 LABEL Name="Php Dev for CRE" \
       CRE=$CRE_VERSION \ 
@@ -38,9 +40,15 @@ RUN apt-get update \
 
 # Install composer and selected extensions
 RUN apt-get update \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t  $(composer --version)" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
 
 COPY cre /cre
 

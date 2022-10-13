@@ -24,6 +24,17 @@ if [ $isInFile -eq 0 ]; then
     #exit 1
 fi
 
+isInFile=$(cat /cre/versions.txt | grep -c "Composer")
+if [ $isInFile -eq 0 ]; then
+    echo "[FAIL]: Composer not installed!"
+    exit 1
+fi
+
+isInFile=$(cat /cre/versions.txt | grep -cP "Composer version $COMPOSER_VERSION")
+if [ $isInFile -eq 0 ]; then
+    echo "[WARNING]: Wrong version of php installed!"
+    #exit 1
+fi
 
 sleep 2
 
