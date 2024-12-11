@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - 'main'
+  workflow_dispatch:
+  schedule:
+    # * is a special character in YAML so you have to quote this string 1:00  weekly,Saturday,1:00 #m h d/m m d/w 
+    - cron:  '25 2 * * 6'
 
 jobs:
   docker:
@@ -30,12 +34,12 @@ jobs:
         with:
           file: ./Dockerfile22
           push: true
-          tags: tamboraorg/crephpdev:check22
+          tags: credocker/crephpdev:check22
 
       -
         name: Test
         run: |
-          docker run tamboraorg/crephpdev:check22 /cre/php-dev-test.sh  
+          docker run credocker/crephpdev:check22 /cre/php-dev-test.sh  
       -
         name: Build and push
         id: docker_push
@@ -43,7 +47,7 @@ jobs:
         with:
           file: ./Dockerfile22
           push: true
-          tags: tamboraorg/crephpdev:2022.0 
+          tags: credocker/crephpdev:2022.0 
 
         
 
