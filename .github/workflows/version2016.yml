@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: versions:2016.0
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+  schedule:
+    # * is a special character in YAML so you have to quote this string 1:00  weekly,Wednesday,1:00 #m h d/m m d/w 
+    - cron:  '37 2 * * 3'
+
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set ownership
+        run: |
+          # this is to fix GIT not liking owner of the checkout dir
+          chown -R $(id -u):$(id -g) $PWD
+      - name: run docker in docker
+        run: (docker container run --volume ./cre/versions:/cre/versions credocker/crephpdev:2016.0 /cre/update-versions.sh 2016) 
+      - name: Submit changes       
+        uses: EndBug/add-and-commit@v9
+        with:
+#          pull: '--rebase --autostash ...'
+          add: 'cre/versions/versions_2016.txt cre/versions/requirements_2016.txt'
+          tag_push: '--force'

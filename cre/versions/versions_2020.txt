@@ -1,0 +1,7 @@
+creBuild 	 2024.12
+ creUbuntu 	 20.04.6 LTS
+  UbuntuName 	 focal
+  OpenSSL 1.1.1f  31 Mar 2020
+  Java 	 openjdk version "11.0.25" 2024-10-15
+  Python3 	 Python 3.8.10
+   Flask 	 Flask 3.0.3
