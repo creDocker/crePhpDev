@@ -30,12 +30,12 @@ jobs:
         with:
           file: ./Dockerfile18
           push: true
-          tags: tamboraorg/crephpdev:check18
+          tags: credocker/crephpdev:check18
 
       -
         name: Test
         run: |
-          docker run tamboraorg/crephpdev:check18 /cre/php-dev-test.sh  
+          docker run credocker/crephpdev:check18 /cre/php-dev-test.sh  
       -
         name: Build and push
         id: docker_push
@@ -43,5 +43,5 @@ jobs:
         with:
           file: ./Dockerfile18
           push: true
-          tags: tamboraorg/crephpdev:2018.0 
+          tags: credocker/crephpdev:2018.0 
 
