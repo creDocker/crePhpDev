@@ -40,6 +40,10 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
+# Freeze python requirements here:
+RUN mkdir -p /cre && \ 
+    pip3 freeze --no-cache-dir > /cre/requirements.txt.orig
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  composer \t $(php /usr/local/bin/composer --version)" >> /cre/versions.txt  && \
     echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
