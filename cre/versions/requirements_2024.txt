@@ -1,5 +1,5 @@
 asttokens==3.0.0
-attrs==24.2.0
+attrs==24.3.0
 babel==2.16.0
 backcall==0.2.0
 beautifulsoup4==4.12.3
