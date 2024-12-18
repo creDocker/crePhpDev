@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
   schedule:
     # * is a special character in YAML so you have to quote this string 1:00  weekly,Sunday,1:00 #m h d/m m d/w 
-    - cron:  '37 2 * * 0'
+    - cron:  '41 2 * * 0'
 
 jobs:
   versions:
