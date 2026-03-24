@@ -46,7 +46,7 @@ RUN apt-get update \
 
 # Freeze python requirements here:
 RUN mkdir -p /cre && \ 
-    pip3 freeze --no-cache-dir > /cre/requirements.txt.orig
+    uv pip freeze --no-cache-dir > /cre/requirements.txt.orig
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  $(composer --version)" >> /cre/versions.txt  && \
