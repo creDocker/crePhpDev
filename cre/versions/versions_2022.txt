@@ -9,7 +9,7 @@ creBuild 	 2026.09
    pandas 	 2.3.3
    Flask 	 
  crePhp 	 8.1 
-  PHP 8.1.2-1ubuntu2.25 (cli) (built: Jul 16 2026 18:32:33) (NTS)
+  PHP 8.1.2-1ubuntu2.26 (cli) (built: Sep  2 2026 12:42:10) (NTS)
   libpq5 	 Version: 14.24-0ubuntu0.22.04.1
   
 Deprecated: Return type of Symfony\Component\Console\Helper\HelperSet::getIterator() should either be compatible with IteratorAggregate::getIterator(): Traversable, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in phar:///usr/local/bin/composer/vendor/symfony/console/Helper/HelperSet.php on line 112
