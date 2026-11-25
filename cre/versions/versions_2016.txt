@@ -1,13 +1,13 @@
-creBuild 	 2026.01
+creBuild 	 2026.11
  creUbuntu 	 16.04.7 LTS
   UbuntuName 	 xenial
   OpenSSL 1.0.2g  1 Mar 2016
-  Java 	 openjdk version "1.8.0_292"
+  Java 	 openjdk version "1.8.0_482"
   Python3 	 Python 3.5.2
  crePhp 	 7.0 
-  PHP 7.0.33-0ubuntu0.16.04.16 (cli) ( NTS )
-  libpq5 	 Version: 10.1-1.pgdg16.04+1
+  PHP 7.0.33-0ubuntu0.16.04.16+esm18 (cli) ( NTS )
+  libpq5 	 Version: 12.3-1.pgdg16.04+1
   Composer version 1.10.1 2020-03-13 20:34:27
  creNode 	 10.15.3
-  node 	 v10.24.1
-  npm 	 6.14.12
+  node 	 
+  npm 	 
